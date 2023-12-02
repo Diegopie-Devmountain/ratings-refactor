@@ -21,4 +21,4 @@ async function connectToDB(dbURI) {
   return sequelize;
 }
 
-export default connectToDB;
+export const db = await connectToDB('postgresql:///ratings');

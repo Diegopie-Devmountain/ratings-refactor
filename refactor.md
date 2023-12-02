@@ -23,6 +23,10 @@ Have a model folder where each model can be it's own file, and a single index.js
 - Set users in it's own file
 - have index.js export all models
 
+### Estimate
+
+20 minutes; 18 minutes; 7 minutes; 23 minutes
+
 ## Update Routes
 
 Have a routes folder where each route can be it's own file, and a single index.js exports all our routes
