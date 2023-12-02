@@ -1,8 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
+import { db } from '../config/db.js';
 import util from 'util';
-import connectToDB from '../server/config/db.js';
 
-export const db = await connectToDB('postgresql:///ratings');
 
 export class User extends Model {
   [util.inspect.custom]() {
@@ -33,38 +32,7 @@ User.init(
   },
 );
 
-export class Movie extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
 
-Movie.init(
-  {
-    movieId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    overview: {
-      type: DataTypes.TEXT,
-    },
-    releaseDate: {
-      type: DataTypes.DATE,
-    },
-    posterPath: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    modelName: 'movie',
-    sequelize: db,
-  },
-);
 
 export class Rating extends Model {
   [util.inspect.custom]() {
@@ -92,8 +60,8 @@ Rating.init(
   },
 );
 
-Movie.hasMany(Rating, { foreignKey: 'movieId' });
-Rating.belongsTo(Movie, { foreignKey: 'movieId' });
+// Movie.hasMany(Rating, { foreignKey: 'movieId' });
+// Rating.belongsTo(Movie, { foreignKey: 'movieId' });
 
 User.hasMany(Rating, { foreignKey: 'userId' });
 Rating.belongsTo(User, { foreignKey: 'userId' });

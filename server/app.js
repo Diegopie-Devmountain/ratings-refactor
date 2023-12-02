@@ -2,7 +2,8 @@ import express from 'express';
 import session from 'express-session';
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
-import { Movie, User } from './src/model.js';
+import { Movie } from './models/index.js'
+import { User } from './models/model.js';
 
 const app = express();
 const port = '4090';
