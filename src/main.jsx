@@ -50,7 +50,7 @@ const router = createBrowserRouter(
         path="me"
         element={<YourRatingsPage />}
         loader={async () => {
-          const res = await axios.get('/api/ratings');
+          const res = await axios.get('/api/ratings/all');
           return { ratings: res.data };
         }}
       />
