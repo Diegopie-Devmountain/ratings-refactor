@@ -3,6 +3,7 @@ import session from 'express-session';
 import morgan from 'morgan';
 import ViteExpress from 'vite-express';
 import { Movie, User } from './models/index.js'
+import router from './routes/index.js';
 
 const app = express();
 const port = '4090';
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
 
+app.use(router);
+
 // Custom route middleware function that checks if the user is logged in.
 function loginRequired(req, res, next) {
   if (!req.session.userId) {
@@ -22,16 +25,7 @@ function loginRequired(req, res, next) {
   }
 }
 
-app.get('/api/movies', async (req, res) => {
-  const allMovies = await Movie.findAll();
-  res.json(allMovies);
-});
 
-app.get('/api/movies/:movieId', async (req, res) => {
-  const { movieId } = req.params;
-  const movie = await Movie.findByPk(movieId);
-  res.json(movie);
-});
 
 app.post('/api/auth', async (req, res) => {
   const { email, password } = req.body;

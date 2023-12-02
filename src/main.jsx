@@ -27,7 +27,7 @@ const router = createBrowserRouter(
         path="movies"
         element={<AllMoviesPage />}
         loader={async () => {
-          const res = await axios.get('/api/movies');
+          const res = await axios.get('/api/movies/all');
           return { movies: res.data };
         }}
       />
