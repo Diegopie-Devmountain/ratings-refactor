@@ -14,4 +14,12 @@ movieRouter.get('/:movieId', async (req, res) => {
   res.json(movie);
 });
 
+movieRouter.post('/create', async ({body}, res) => {
+  console.log(body);
+  const newMovie = await Movie.create(body)
+
+  console.log(newMovie);
+  res.json({success: true, movie: newMovie})
+})
+
 export default movieRouter;
