@@ -1,4 +1,4 @@
-const CACHE_NAME = "movie-ratings-cache-v1.6"
+const CACHE_NAME = "movie-ratings-cache-v1.8"
 const filesToCache = [
   "/offline.html",
   "/siteIcons/mRatings.png"
